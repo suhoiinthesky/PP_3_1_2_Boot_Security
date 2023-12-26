@@ -22,10 +22,10 @@ public class DataBaseloader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Role ROLE_USER = new Role("USER");
+        Role ROLE_USER = new Role("ROLE_USER");
         roleService.save(ROLE_USER);
 
-        Role ROLE_ADMIN = new Role("ADMIN");
+        Role ROLE_ADMIN = new Role("ROLE_ADMIN");
         roleService.save(ROLE_ADMIN);
 
         User user = new User("userAbuser", "fafi@gmail.ru", "1234");

@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.repository.UserRepository;
 import ru.kata.spring.boot_security.demo.security.UserDetailsImp;
@@ -22,16 +23,19 @@ public class UserServiceIpm implements UserService, UserDetailsService {
     }
 
     @Override
+    @Transactional
     public void save(User user) {
         userRepository.save(user);
     }
 
     @Override
+    @Transactional
     public List<User> getUserList() {
         return userRepository.findAll();
     }
 
     @Override
+    @Transactional
     public void delete(User user) {
         userRepository.delete(user);
     }
@@ -44,6 +48,7 @@ public class UserServiceIpm implements UserService, UserDetailsService {
      * Просто хотел дать понять что да - это делать по идее надо.
      */
     @Override
+    @Transactional
     public User findById(Long id) {
         if (userRepository.findById(id).isPresent()) {
             return userRepository.findById(id).get();
@@ -53,6 +58,7 @@ public class UserServiceIpm implements UserService, UserDetailsService {
     }
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUserName(username);
         if (user == null) {
