@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.kata.spring.boot_security.demo.Service.UserServiceIpm;
 import ru.kata.spring.boot_security.demo.model.User;
+import ru.kata.spring.boot_security.demo.security.UserDetailsImp;
 
 
 import java.security.Principal;
@@ -21,8 +22,9 @@ public class UserController {
     }
     @GetMapping
     public String getUserPage(Model model, Principal principal) {
-        User user = (User) userService.loadUserByUsername(principal.getName());
-        model.addAttribute("user", user);
-        return "userPage/user";
+        UserDetailsImp user = (UserDetailsImp) userService.loadUserByUsername(principal.getName());
+        User user1 = user.getUser();
+        model.addAttribute("user", user1);
+        return "user";
     }
 }

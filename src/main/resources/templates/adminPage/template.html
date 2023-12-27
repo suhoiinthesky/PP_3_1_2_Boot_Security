@@ -11,6 +11,7 @@
     <h1>Пользователь</h1>
     <form th:method="POST" th:action="@{/admin}" th:object="${user}" accept-charset="UTF-8">
         <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{roles}">
 
         <div class="mb-3">
             <label for="username" class="form-label">Имя пользователя</label>
@@ -23,6 +24,12 @@
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="text" th:field="*{email}" id="email" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="role" class="form-label">Роль</label>
+            <select th:field="*{roles}" id="role" class="form-control">
+                <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}"></option>
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Сохранить</button>
     </form>

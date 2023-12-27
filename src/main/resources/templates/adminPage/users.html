@@ -13,10 +13,12 @@
         <th scope="col">Name</th>
         <th scope="col">Email</th>
         <th scope="col">Role</th>
+        <th scope="col">Удалить</th>
+        <th scope="col">Редактировать</th>
     </tr>
     <tr th:each="user : ${users}">
         <td th:text="${user.id}"></td>
-        <td th:text="${user.userName}"></td>
+        <td><a th:href="@{/admin/showUser(id=${user.id})}" th:text="${user.userName}"></a></td>
         <td th:text="${user.email}"></td>
         <td th:text="${user.roles}"></td>
         <td>

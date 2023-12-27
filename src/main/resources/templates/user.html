@@ -22,6 +22,12 @@
         <td th:text="${user.roles}">VALUE</td>
     </tr>
 </table>
+<div class="mb-3">
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign out"/>
+    </form>
+</div>
+<button class="btn btn-primary" onclick="window.location.href='/admin/home'">Страница администратора</button>
 
 </body>
 </html>
