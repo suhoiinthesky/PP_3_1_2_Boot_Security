@@ -1,8 +1,10 @@
 package ru.kata.spring.boot_security.demo;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import ru.kata.spring.boot_security.demo.Service.RoleServiceImp;
+import ru.kata.spring.boot_security.demo.Service.UserService;
 import ru.kata.spring.boot_security.demo.Service.UserServiceIpm;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
@@ -12,10 +14,10 @@ import java.util.List;
 
 @Component
 public class DataBaseloader implements CommandLineRunner {
-    private final UserServiceIpm userService;
+    private final UserService userService;
     private final RoleServiceImp roleService;
 
-    public DataBaseloader(UserServiceIpm userService, RoleServiceImp roleService) {
+    public DataBaseloader(UserService userService, RoleServiceImp roleService) {
         this.userService = userService;
         this.roleService = roleService;
     }
